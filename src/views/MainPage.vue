@@ -14,20 +14,23 @@
 <script>
 import Header from "@/components/Header";
 import Video from "@/components/Video";
-import {  mapGetters } from "vuex";
+import {  mapGetters, mapActions } from "vuex";
 export default {
   name: "MainPage",
   components: {
     Header,
     Video
   },
+  methods: {
+    ...mapActions(["callVideoInfo"])
+  },
   computed: {
     ...mapGetters({
       videos: "getVideoInfo"
     })
   },
-  mounted(){
-    this.$store.dispatch("callVideoInfo");
+  mounted() {
+    this.callVideoInfo();
   }
 }
 </script>

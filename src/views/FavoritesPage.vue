@@ -15,21 +15,18 @@
 import Header from "@/components/Header";
 import FavoriteVideo from "@/components/FavoriteVideo";
 import axios from "axios";
+import {mapGetters} from "vuex";
 export default {
   name: "FavoritesPage",
   components: {
     FavoriteVideo,
     Header
   },
-  data() {
-    return {
-      videos: []
-    }
-  },
   computed:{
-    filteredVideos(){
-      return this.videos.filter(video => video.favorite === true)
-    }
+    ...mapGetters({
+      videos: "getVideoInfo",
+      filteredVideos: "getFavoriteVideoInfo"
+    })
   },
   async mounted(){
     const _path = "https://my-json-server.typicode.com/modanisa/bootcamp-video-db/videos";

@@ -12,25 +12,22 @@
 </template>
 
 <script>
-import axios from "axios";
 import Header from "@/components/Header";
 import Video from "@/components/Video";
+import {  mapGetters } from "vuex";
 export default {
   name: "MainPage",
   components: {
     Header,
     Video
   },
-  data() {
-    return {
-      videos: []
-    }
+  computed: {
+    ...mapGetters({
+      videos: "getVideoInfo"
+    })
   },
-  async mounted(){
-    const _path = "https://my-json-server.typicode.com/modanisa/bootcamp-video-db/videos";
-    const { data } = await axios.get(_path);
-    this.videos = data;
-    console.log(data);
+  mounted(){
+    this.$store.dispatch("callVideoInfo");
   }
 }
 </script>

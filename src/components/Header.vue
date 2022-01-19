@@ -21,7 +21,7 @@ export default {
 <style scoped>
 .header-container{
   display: flex;
-  background-color: deeppink;
+  background-color: #9b9e9c;
   width: 1600px;
   justify-content: space-between;
   padding: 10px 20px;
